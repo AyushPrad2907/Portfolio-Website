@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ayush Pradhan | Creative Developer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/17d05da942.js" crossorigin="anonymous"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #0D1117;
+            color: #F0F8FF;
+            overflow-x: hidden;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background-color: rgba(13, 17, 23, 0.8);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            color: #90EE90;
+        }
+
+        nav a {
+            color: #F0F8FF;
+            text-decoration: none;
+            margin: 0 1rem;
+            font-weight: 600;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #90EE90;
+        }
+
+        .contact-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: #1A202C;
+            border: 1px solid #374151;
+            border-radius: 8px;
+            padding: 0.5rem;
+            display: none;
+            flex-direction: column;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            z-index: 100;
+        }
+
+        .contact-dropdown a {
+            color: #F0F8FF;
+            margin: 0.3rem 0;
+            display: flex;
+            align-items: center;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-dropdown a:hover {
+            color: #90EE90;
+        }
+
+        nav .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        nav .dropdown:hover .contact-dropdown {
+            display: flex;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 6rem 2rem;
+            background-color: #1A202C;
+            animation: fadeIn 1s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #90EE90;
+            animation: slideUp 1s ease forwards;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: auto;
+            color: #E0FFFF;
+        }
+
+        .cta {
+            margin-top: 2rem;
+            padding: 1rem 2rem;
+            background-color: #90EE90;
+            color: #0D1117;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s;
+        }
+
+        .cta:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(144, 238, 144, 0.7);
+        }
+
+        section {
+            padding: 4rem 2rem;
+            text-align: center;
+            background-color: #0D1117;
+        }
+
+        #about {
+            background-color: #1A202C;
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+            text-align: left;
+            margin-top: -3rem;
+        }
+
+        #about h3 {
+            color: #90EE90;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        #about p {
+            line-height: 1.6;
+            padding: 0 2rem;
+        }
+
+        #skills-visuals {
+            background-color: #1A202C;
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+        }
+
+        #skills-visuals h3 {
+            color: #90EE90;
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-item {
+            margin-bottom: 1rem;
+            text-align: left;
+            padding: 0 2rem;
+        }
+
+        .skill-name {
+            font-weight: bold;
+            margin-bottom: 0.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .progress-bar-container {
+            background-color: #2D3748;
+            border-radius: 5px;
+            height: 8px;
+            width: 70%;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            background-color: #90EE90;
+            height: 100%;
+            border-radius: 5px;
+            width: 0%;
+        }
+
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            background-color: #1A202C;
+            padding: 2rem;
+            border-radius: 8px;
+        }
+
+        form input, form textarea {
+            padding: 0.8rem;
+            border-radius: 8px;
+            border: 1px solid #4A5568;
+            font-size: 1rem;
+            background-color: #2D3748;
+            color: #F0F8FF;
+        }
+
+        form button {
+            background: #90EE90;
+            color: #0D1117;
+            border: none;
+            padding: 0.8rem;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        form button:hover {
+            background: #2E8B57;
+        }
+
+        .projects {
+            padding: 4rem 2rem;
+            background-color: #1A202C;
+            text-align: center;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .projects h3 {
+            color: #90EE90;
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+        }
+
+        .project-grid {
+            display: grid;
+            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        .project {
+            background-color: #2D3748;
+            padding: 1.5rem;
+            border-radius: 10px;
+            transition: transform 0.4s, box-shadow 0.4s;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .project.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .project:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(144, 238, 144, 0.3);
+        }
+
+        .project h4 {
+            color: #90EE90;
+            margin-bottom: 0.5rem;
+        }
+
+        .github-btn {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            background-color: #90EE90;
+            color: #0D1117;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .github-btn:hover {
+            background-color: #2E8B57;
+            transform: scale(1.1);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: #1A202C;
+            font-size: 0.9rem;
+            color: #F0F8FF;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero h2 { font-size: 2rem; }
+            .hero p { font-size: 1rem; }
+        }
+
+        /* Typing Animation CSS */
+        .typing-animation-container {
+            margin-top: 1rem;
+            font-size: 1.5rem;
+            color: #90EE90;
+            display: flex;
+            gap: 0.2rem;
+            justify-content: center;
+        }
+
+        .static-text {
+            white-space: nowrap;
+        }
+
+        .dynamic-text {
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: .15em solid #90EE90;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Ayush Pradhan</h1>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#projects">Projects</a>
+            <a href="https://drive.google.com/file/d/1mPOSaJukd_XM97AqQot0Eu0XCAD6Np4R/view?usp=sharing">RESUME</a>
+            <div class="dropdown">
+                <a href="#contact" id="contact-link">Contact</a>
+                <div class="contact-dropdown">
+                    <a href="YOUR_LINKEDIN_URL" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                    <a href="YOUR_TWITTER_URL" target="_blank"><i class="fab fa-twitter"></i> Twitter</a>
+                    <a href="YOUR_INSTAGRAM_URL" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+                    <a href="mailto:YOUR_EMAIL@example.com"><i class="fas fa-envelope"></i> Email</a>
+                </div>
+
+        </nav>
+    </header>
+
+    <section class="hero" id="home" style="display: flex; flex-direction: column; align-items: center;">
+        <h2>Welcome to My Creative World</h2>
+        <p>Hi! I'm Ayush Pradhan, a passionate developer turning ideas into beautiful digital experiences.</p>
+        <div class="typing-animation-container">
+            <span class="static-text">I am a &nbsp;</span>
+            <span class="dynamic-text" id="dynamic-text"></span>
+        </div>
+    </section>
+
+    <section id="about">
+        <h3>About Me</h3>
+        <p>
+            Hi, I'm Ayush Pradhan! I'm a developer with a passion for creating innovative and user-friendly digital solutions.
+            My journey into the world of programming started [mention when and how it started, e.g., during college, through online courses].
+            I am driven by the desire to learn new technologies and apply them to build meaningful projects.
+        </p>
+        <p>
+            My work ethic is centered around collaboration, attention to detail, and a commitment to delivering high-quality results.
+            I enjoy the process of problem-solving and the satisfaction of turning ideas into reality through code.
+        </p>
+        <p>
+            Beyond coding, I am interested in [mention your passions and hobbies, e.g., open-source contributions, learning about AI, playing sports].
+            I believe that a well-rounded approach to life enhances creativity and effectiveness in my work.
+        </p>
+        </section>
+
+    <section id="skills-visuals">
+        <h3>My Skills</h3>
+        <div class="skill-item">
+            <div class="skill-name"><i class="fa-brands fa-html5"></i> HTML</div>
+            <div class="progress-bar-container">
+                <div class="progress-bar" style="width: 90%;"></div>
+            </div>
+        </div>
+        <div class="skill-item">
+            <div class="skill-name"><i class="fa-brands fa-css3-alt"></i> CSS</div>
+            <div class="progress-bar-container">
+                <div class="progress-bar" style="width: 85%;"></div>
+            </div>
+        </div>
+        <div class="skill-item">
+            <div class="skill-name"><i class="fa-brands fa-js-square"></i> JavaScript</div>
+            <div class="progress-bar-container">
+                <div class="progress-bar" style="width: 80%;"></div>
+            </div>
+        </div>
+        <div class="skill-item">
+            <div class="skill-name"><i class="fa-brands fa-react"></i> React</div>
+            <div class="progress-bar-container">
+                <div class="progress-bar" style="width: 75%;"></div>
+            </div>
+        </div>
+        <div class="skill-item">
+            <div class="skill-name"><i class="fa-brands fa-node-js"></i> Node.js</div>
+            <div class="progress-bar-container">
+                <div class="progress-bar" style="width: 70%;"></div>
+            </div>
+        </div>
+        <div class="skill-item">
+            <div class="skill-name"><i class="fa-brands fa-python"></i> Python</div>
+            <div class="progress-bar-container">
+                <div class="progress-bar" style="width: 65%;"></div>
+            </div>
+        </div>
+        <div class="skill-item">
+            <div class="skill-name"><i class="fa-brands fa-github"></i> Git</div>
+            <div class="progress-bar-container">
+                <div class="progress-bar" style="width: 80%;"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="projects" id="projects">
+    <h3>Featured Projects</h3>
+    <div class="project-grid">
+        <div class="project">
+            <h4>Portfolio Website</h4>
+            <p>A sleek personal portfolio to showcase my skills and work.</p>
+            <a class="github-btn" href="https://github.com/YOUR_USERNAME/portfolio" target="_blank"><i class="fab fa-github"></i> View on GitHub</a>
+        </div>
+        <div class="project">
+            <h4>Weather App</h4>
+            <p>Displays real-time weather data using open APIs and responsive UI.</p>
+            <a class="github-btn" href="https://github.com/YOUR_USERNAME/weather-app" target="_blank"><i class="fab fa-github"></i> View on GitHub</a>
+        </div>
+        <div class="project">
+            <h4>Task Manager</h4>
+            <p>Organize tasks with ease using this lightweight productivity tool.</p>
+            <a class="github-btn" href="https://github.com/YOUR_USERNAME/task-manager" target="_blank"><i class="fab fa-github"></i> View on GitHub</a>
+        </div>
+
+        <div class="project">
+            <h4>New Project Title 1</h4>
+            <p>Brief description of the new project 1.</p>
+            <a class="github-btn" href="#" target="_blank"><i class="fab fa-github"></i> View on GitHub</a>
+        </div>
+        <div class="project">
+            <h4>New Project Title 2</h4>
+            <p>Brief description of the new project 2.</p>
+            <a class="github-btn" href="#" target="_blank"><i class="fab fa-github"></i> View on GitHub</a>
+        </div>
+        <div class="project">
+            <h4>New Project Title 3</h4>
+            <p>Brief description of the new project 3.</p>
+            <a class="github-btn" href="#" target="_blank"><i class="fab fa-github"></i> View on GitHub</a>
+        </div>
+    </div>
+</section>
+
+    <section id="skills" style="display: none;">
+        <h3>Skills</h3>
+        <div class="skills-grid">
+            <span><i class="fa-brands fa-html5"></i> HTML</span>
+            <span><i class="fa-brands fa-css3-alt"></i> CSS</span>
+            <span><i class="fa-brands fa-js-square"></i> JavaScript</span>
+            <span><i class="fa-brands fa-react"></i> React</span>
+            <span><i class="fa-brands fa-node-js"></i> Node.js</span>
+            <span><i class="fa-brands fa-python"></i> Python</span>
+            <span><i class="fa-brands fa-github"></i> Git</span>
+        </div>
+    </section>
+
+    <section id="contact-form">
+        <h3>Contact Me</h3>
+        <form action="mailto:YOUR_EMAIL@example.com" method="POST" enctype="text/plain">
+            <input type="text" name="name" placeholder="Your Name" required style="color: #F0F8FF; border-color: #4A5568; background-color: #2D3748;">
+            <input type="email" name="email" placeholder="Your Email" required style="color: #F0F8FF; border-color: #4A5568; background-color: #2D3748;">
+            <textarea name="message" rows="4" placeholder="Your Message" style="color: #F0F8FF; border-color: #4A5568; background-color: #2D3748;"></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <footer id="contact">
+        <p>&copy; 2025 Ayush Pradhan. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function scrollToProjects() {
+            document.getElementById("projects").scrollIntoView({ behavior: 'smooth' });
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        });
+
+        const hiddenElements = document.querySelectorAll('.project');
+        hiddenElements.forEach(el => observer.observe(el));
+
+        const dynamicTextElement = document.getElementById('dynamic-text');
+        const words = ["Developer", "Designer", "Dreamer"," Creator", "Innovator", "Coder","AI Engineer", "Tech Enthusiast", "Problem Solver"];
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const speed = 150;
+        const erasingSpeed = 75;
+        const delayBetweenWords = 2000;
+
+        function typeEffect() {
+            const currentWord = words[wordIndex];
+
+            if (!isDeleting) {
+                dynamicTextElement.textContent = currentWord.substring(0, charIndex + 1);
+                charIndex++;
+            } else {
+                dynamicTextElement.textContent = currentWord.substring(0, charIndex - 1);
+                charIndex--;
+            }
+
+            if (charIndex === currentWord.length && !isDeleting) {
+                isDeleting = true;
+                setTimeout(typeEffect, delayBetweenWords);
+            } else if (charIndex === 0 && isDeleting) {
+                isDeleting = false;
+                wordIndex = (wordIndex + 1) % words.length;
+                setTimeout(typeEffect, speed);
+            } else {
+                setTimeout(typeEffect, isDeleting ? erasingSpeed : speed);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', typeEffect);
+    </script>
+</body>
+
+</html>
